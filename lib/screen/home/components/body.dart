@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop/models/plant_model.dart';
+import 'package:plant_shop/screen/detail/detail_screen.dart';
 
 import 'header_home_tab.dart';
 import 'plant_card.dart';
@@ -53,7 +54,14 @@ class _BodyState extends State<Body> with SingleTickerProviderStateMixin {
             itemCount: plants.length,
             itemBuilder: (BuildContext context, int index) => PlantCard(
               itemsIndex: index,
-              press: () {},
+              press: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => DetailScreen(
+                              plant: plants[index],
+                            )));
+              },
               plant: plants[index],
               pageController: _pageController,
             ),
